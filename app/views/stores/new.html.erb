@@ -1,0 +1,27 @@
+<script>
+$(function(){
+
+	$('#store_x_coord').on('change', function(){
+
+		xcoord = ($(this).val());
+		commaLocation = xcoord.indexOf(',');
+		console.log(commaLocation)
+		if (commaLocation > 1) {
+			
+		ycoordVal = xcoord.substr(commaLocation + 2, xcoord.length);
+		xcoordVal =  xcoord.substr(0, commaLocation);
+
+		$(this).val(xcoordVal);
+		$('#store_y_coord').val(ycoordVal);
+		}
+
+	})
+})
+
+
+</script>
+<%- model_class = Store -%>
+<div class="page-header">
+  <h1>New Store</h1>
+</div>
+<%= render :partial => 'form' %>

@@ -1,0 +1,35 @@
+<%- model_class = Store -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @store.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:x_coord) %>:</strong></dt>
+  <dd><%= @store.x_coord %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:y_coord) %>:</strong></dt>
+  <dd><%= @store.y_coord %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:brand_type) %>:</strong></dt>
+  <dd><%= @store.brand.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @store.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @store.status.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:store_number) %>:</strong></dt>
+  <dd><%= @store.store_number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:square_footage) %>:</strong></dt>
+  <dd><%= @store.square_footage %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              stores_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_store_path(@store), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              store_path(@store),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
