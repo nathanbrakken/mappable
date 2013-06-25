@@ -113,7 +113,6 @@ var MapStores = new function(){
 		var  map_stores_page = $('#map_stores').val();
 
 		if (map_stores_page != null) {
-			alert('boo')
 			MapStores.initStoreLocationMapper();
 		}
 	});
