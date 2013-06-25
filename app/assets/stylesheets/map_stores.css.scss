@@ -1,3 +1,45 @@
 // Place all the styles related to the map_stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+	html { height: 100% }
+	
+	body { 
+		height: 100%;
+		margin: 0;
+		padding: 0
+	}
+
+	/* bootsrap hack for any images on the map */
+  	#map-canvas img { 
+  		width: auto;
+  		display:inline; 
+		max-width: none;
+
+  	}
+	
+	/* Makes map full size */
+	#map-canvas {
+		height: 100%;
+		margin-top: -20px;
+	}
+	#new_coords {
+		display:none;
+		padding: 0 0 30px 15px;
+		// height:60px;
+	}
+
+	/* For any styles related to the infobox in the map */
+	.infobox {
+		    background:#000;
+		    color:#FFF;
+		    font-family:Arial, Helvetica, sans-serif;
+		    font-size:12px;
+		    font-weight: bold;
+		    padding: 2px 2px 2px 5px;
+		    -webkit-border-radius: 8px;
+		    -moz-border-radius: 8px;
+		    border-radius: 8px;
+		    min-width: 80px;
+		    width: auto;
+		    height: auto;
+	}

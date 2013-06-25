@@ -1,29 +1,6 @@
-<!-- need to fix this.  Issue in the container -->
-		</div>
-	</div>
-</div>
-
-<style type="text/css">
-  html { height: 100% }
-  body { height: 100%; margin: 0; padding: 0 } 
-  	#google-map-area { height: 100% }
-  #map-canvas { height: 100% }
-  #map-canvas img { width: auto; display:inline; }
-		#map-canvas img { 
-	  	max-width: none;
-		}
-
-		#mapCanvas label { 
-	  	width: auto; display:inline; 
-		} 
-</style>
-<script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=&sensor=false">
-</script>
 <script type="text/javascript">
-
 	var map;
-	function initialize() {
+	function LocaterMapInitialize() {
 	  var myLatlng = new google.maps.LatLng(40.74394060479145, -74.03214454650879);
 	  var mapOptions = {
 	    zoom: 12,
@@ -36,33 +13,25 @@
 	    placeMarker(event.latLng);
 	    console.log(event.latLng)
 	  });
-	  // placeMarker({"40.74394060479145, -74.03214454650879"});
-	  // placeMarker(new google.maps.LatLng(40.74394060479145, -74.03214454650879));
-	  
 	}
-	//usage addPlaceMarkerFromCoordinates(40.76624155398039, -73.97163391113281)
-	function addPlaceMarkerFromCoordinates(lat, longitutde) {
-		placeMarker(new google.maps.LatLng(lat, longitutde))
-	}
-
 	function placeMarker(location) {
 	  var marker = new google.maps.Marker({
 	      position: location,
 	      map: map,
 	      title: location.jb + ', ' + location.kb
-	      //
 	  });
 	  infoWindow(marker);
 	}
-
 	var infoWindow = function (marker) {
-		// console.log(marker.title)
 		info = new google.maps.InfoWindow({'content' : marker.title});
 		google.maps.event.addListener(marker, 'click', function(e){
 			info.open(map, marker)
 		})
 	}
-	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	google.maps.event.addDomListener(window, 'load', LocaterMapInitialize);
 </script>
+<!-- need to fix this.  Issue in the container -->
+</div>
 <div id="map-canvas"/>
   

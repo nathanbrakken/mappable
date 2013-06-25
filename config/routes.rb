@@ -1,7 +1,11 @@
 TwitterMapping::Application.routes.draw do
 
-  resources :stores
-  root :to => "home#index"
+  resources :stores do
+    collection do 
+      match 'update_coords', :via => [:get, :post]
+    end
+  end
+  root :to => "stores#index"
   get "locater/index"
   get "map_stores/index"
 

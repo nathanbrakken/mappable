@@ -1,22 +1,24 @@
+
 <script>
-$(function(){
+// $(function(){
 
-	$('#store_x_coord').on('change', function(){
+// 	$('#store_x_coord').on('change', function(){
 
-		xcoord = ($(this).val());
-		commaLocation = xcoord.indexOf(',');
-		console.log(commaLocation)
-		if (commaLocation > 1) {
+// 		xcoord = ($(this).val());
+// 		commaLocation = xcoord.indexOf(',');
+// 		console.log(commaLocation)
+// 		if (commaLocation > 1) {
 			
-		ycoordVal = xcoord.substr(commaLocation + 2, xcoord.length);
-		xcoordVal =  xcoord.substr(0, commaLocation);
+// 		ycoordVal = xcoord.substr(commaLocation + 2, xcoord.length);
+// 		xcoordVal =  xcoord.substr(0, commaLocation);
 
-		$(this).val(xcoordVal);
-		$('#store_y_coord').val(ycoordVal);
-		}
+// 		$(this).val(xcoordVal);
+// 		$('#store_y_coord').val(ycoordVal);
+// 		}
 
-	})
-})
+// 	})
+
+// })
 
 
 </script>

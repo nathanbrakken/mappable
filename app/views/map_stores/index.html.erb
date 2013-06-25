@@ -1,134 +1,25 @@
-<!-- need to fix this.  Issue in the container -->
-		</div>
-	</div>
-</div>
 <%# @stores %>
-<style type="text/css">
-	html { height: 100% }
-	
-	body { 
-		height: 100%;
-		margin: 0;
-		padding: 0
-	}
-	#map-canvas {
-		margin-top: -20px;
-	}
+<!-- need to fix this.  Issue in the container -->
+</div>
+<div id="map_stores"></div>
+<!-- Modal -->
+<div id="confirm_change_coords" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Change Coordinates?</h3>
+  </div>
+  <div class="modal-body">
+    <p>new coordinates for: 
+	<span id="store_name"></span>
+	<span id="x_coords"></span>,
+	<span id="y_coords"></span></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-primary" id="update_coords" >Save changes</button>
+  </div>
+</div>
 
-	/* bootsrap hack for any images on the map */
-  	#map-canvas img { 
-  		width: auto;
-  		display:inline; 
-		max-width: none;
-  	}
-	
-	/* Makes map full size */
-	#map-canvas {
-		height: 100%
-	}
-
-	/* For any styles related to the infobox in the map */
-	.infobox {
-		    background:#000;
-		    color:#FFF;
-		    font-family:Arial, Helvetica, sans-serif;
-		    font-size:12px;
-		    font-weight: bold;
-		    padding: 2px 2px 2px 5px;
-		    -webkit-border-radius: 8px;
-		    -moz-border-radius: 8px;
-		    border-radius: 8px;
-		    min-width: 80px;
-		    width: auto;
-		    height: auto;
-	}
-
-</style>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
-<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
-<script type="text/javascript">
-	var map;
-	// Grabs the stores from json
-    var stores = <%= raw @stores.to_json %>;
-    // Initial zoom for the map
-	var mapCenter = new google.maps.LatLng(40.74394060479145, -74.03214454650879);
-
-    // Set the styles of the map
-	var styles = [
-	{
-	  stylers: [
-	      { hue: "#00d4ff" },
-		  { saturation: -100 },
-		  { lightness: -30 },
-		  { gamma: 0 }
-	  ]
-	},{
-	  featureType: "road",
-	  elementType: "geometry",
-	  stylers: [
-	    { lightness: 100 },
-	    { visibility: "simplified" }
-	  ]
-	},{
-	  featureType: "road",
-	  elementType: "labels",
-	  stylers: [
-	    { visibility: "off" }
-	  ]
-	}
-	];
-
-	// Set all the variables for infobox
-	function infoBoxCreate(content) {
-		return new InfoBox({
-		    content: "<div class='infobox'>" + content + "</div>",
-		    disableAutoPan: false,
-		    //x y
-		    pixelOffset: new google.maps.Size(10, -35),
-		    zIndex: null,
-		    
-		    closeBoxMargin: "0px",
-		    closeBoxURL: "",
-		    infoBoxClearance: new google.maps.Size(1, 1)
-		})
-	};
-
-	// Init
-	function initialize() {
-		//get some map options
-		var mapOptions = {
-			zoom: 12,
-			center: mapCenter,
-			mapTypeId: google.maps.MapTypeId.ROADMAP, 
-			styles: styles
-		}
-
-		map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-		$.each(stores, function(i, val) {
-
-			xyCoords = new google.maps.LatLng(val.x_coord, val.y_coord)
-
-			var marker = new google.maps.Marker({
-				position: xyCoords,
-				map: map,
-				// Set custom icon with the following
-				// icon: '/assets/marker_images/' + val.status_id + '.png'
-			});
-
-			infobox = infoBoxCreate(val.name)
-			info = new google.maps.InfoWindow(infobox);
-			info.open(map, marker);
-
-		});
-	  
-	}
-
-	// Initializes the map
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
     	<!-- The div needed to create the map -->
 <div id="map-canvas"></div>
   

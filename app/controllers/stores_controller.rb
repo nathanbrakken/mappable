@@ -7,6 +7,13 @@ class StoresController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stores }
+      # binding.pry
+      format.csv { send_data Store.generate_csv(['id' , 'name', 'address', 'x_coord', 'y_coord', 'store_number' ], @stores)}
+      format.xlsx {
+        xlsx_package = Store.to_xlsx
+        send_data xlsx_package.to_stream.read, :filename => 'stores.xlsx', :type=> "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      } 
+
     end
   end
 
@@ -80,4 +87,10 @@ class StoresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def update_coords
+    @stores = Store.all
+  end
+
+
 end
