@@ -11,11 +11,11 @@
   <dt><strong><%= model_class.human_attribute_name(:y_coord) %>:</strong></dt>
   <dd><%= @store.y_coord %></dd>
   <dt><strong><%= model_class.human_attribute_name(:brand_type) %>:</strong></dt>
-  <dd><%= @store.brand.name %></dd>
+  <dd><%= @store.brand.nil? ? 'NONE' : @store.brand.name  %></dd>
   <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
   <dd><%= @store.address %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @store.status.name %></dd>
+  <dd><%= @store.status.nil? ? 'NONE' : @store.status.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:store_number) %>:</strong></dt>
   <dd><%= @store.store_number %></dd>
   <dt><strong><%= model_class.human_attribute_name(:square_footage) %>:</strong></dt>

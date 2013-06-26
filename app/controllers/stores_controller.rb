@@ -17,6 +17,16 @@ class StoresController < ApplicationController
     end
   end
 
+  def import
+    logger.debug params[:file]
+    params[:file].nil? do
+      flash[:error] = 'You need a file'
+      redirect_to stores_path
+    end
+    Store.import(params[:file])
+    redirect_to stores_path, notice: "Stores imported."
+  end
+
   # GET /stores/1
   # GET /stores/1.json
   def show
@@ -83,7 +93,7 @@ class StoresController < ApplicationController
     @store.destroy
 
     respond_to do |format|
-      format.html { redirect_to stores_url }
+      format.html { redirect_to stores_url notice: 'Store was successfully deleted.'}
       format.json { head :no_content }
     end
   end

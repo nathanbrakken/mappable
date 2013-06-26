@@ -3,6 +3,7 @@ TwitterMapping::Application.routes.draw do
   resources :stores do
     collection do 
       match 'update_coords', :via => [:get, :post]
+      match 'import', :via => [:post]
     end
   end
   root :to => "stores#index"

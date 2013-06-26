@@ -30,9 +30,9 @@
         <td><%= store.name %></td>
         <td><%= store.x_coord %></td>
         <td><%= store.y_coord %></td>
-        <td><%= store.brand.name %></td>
+        <td><%= store.brand.name unless store.brand.nil? %></td>
         <td><%= store.address %></td>
-        <td><%= store.status.name %></td>
+        <td><%= store.status.name  unless store.status.nil? %></td>
         <td><%= store.store_number %></td>
         <td><%= store.square_footage %></td>
         <td><%=l store.created_at %></td>
@@ -53,3 +53,10 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_store_path,
             :class => 'btn btn-primary' %>
+
+<h2>Import Stores</h2>
+
+<%= form_tag import_stores_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'roo'
 gem 'rails', '3.2.13'
 gem 'acts_as_xlsx'
 # Bundle edge Rails instead:
